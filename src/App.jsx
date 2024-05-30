@@ -35,7 +35,7 @@ return (<ul id={subject.id} className={'line'}>
 </ul>)
 }
 
-export default function Form({count}) {
+export  function Form({count}) {
   let refinput=useRef([])
   let [des,setDes]=useState([]);
   let [subjects,setSubject]=useState(()=>{
