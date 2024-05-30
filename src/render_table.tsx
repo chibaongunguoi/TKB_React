@@ -1,4 +1,4 @@
-import { useContext, useState,useRef } from 'react'
+import { useRef } from 'react'
 export function renderTable(){
     let itemsRef = useRef(new Map());
   let day=[];
@@ -33,7 +33,7 @@ export function renderTable(){
     return [itemsRef.current,day];
 }
 
-export function validate(day,begin,end){
+export function validate(day:number,begin:number,end:number){
   if (Number.isNaN(day) ||Number.isNaN(begin)||Number.isNaN(end))
     return false;
   if (day<2||day>8)
