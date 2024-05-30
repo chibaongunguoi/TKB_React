@@ -1,35 +1,20 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Form from './Form'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+export default function App() {
+  let [count,setCount]=useState('');
+  let [isSubmit,setIsSubmit]=useState(JSON.parse(localStorage.getItem('subjects'))!=null);
+  return(
+  <div id="wrapper">
+     {!isSubmit ?
+      (<form id="row_number" onSubmit={()=>setIsSubmit(true)}>
+        <label >Nhập số môn bạn học trong học kì này (từ 1 đến 20):</label>
+        <input  id="row_n" value={count}
+         onChange={(e) => setCount(e.target.value)}/>
+        <input type="submit" value="Thêm" />
+      </form>):<Form count={count}/>}
+    </div>
   )
 }
 
-export default App
+
